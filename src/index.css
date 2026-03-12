@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 207 50% 7%;
+    --foreground: 210 20% 96%;
+
+    --card: 207 40% 12%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 207 40% 12%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 213 80% 56%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 207 30% 18%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 207 25% 15%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 152 48% 60%;
+    --accent-foreground: 207 50% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 207 25% 20%;
+    --input: 207 25% 20%;
+    --ring: 213 80% 56%;
+
+    --radius: 1rem;
+
+    /* Custom NOMARU tokens */
+    --gradient-deep: linear-gradient(135deg, hsl(207 50% 7%), hsl(200 35% 16%), hsl(200 40% 22%));
+    --gradient-ocean: linear-gradient(135deg, hsl(213 80% 56%), hsl(193 85% 63%));
+    --gradient-mint: linear-gradient(135deg, hsl(152 48% 60%), hsl(193 85% 63%));
+    --glass-bg: hsla(207, 30%, 20%, 0.4);
+    --glass-border: hsla(210, 20%, 96%, 0.1);
+    --glass-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.25);
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 207 40% 10%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 213 80% 56%;
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 207 30% 18%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 207 25% 20%;
+    --sidebar-ring: 213 80% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px hsla(0, 0%, 0%, 0.35);
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded-full font-body font-medium text-primary-foreground transition-all duration-300;
+    background: var(--gradient-ocean);
+    box-shadow: 0 4px 20px hsla(213, 80%, 56%, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 30px hsla(213, 80%, 56%, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-glass {
+    @apply px-8 py-3 rounded-full font-body font-medium text-foreground transition-all duration-300;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .btn-glass:hover {
+    background: hsla(207, 30%, 25%, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    background: var(--gradient-ocean);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-24;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fadeUp 0.6s ease-out 0.15s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fadeUp 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fadeUp 0.6s ease-out 0.45s forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
